@@ -17,6 +17,30 @@ class QuizState extends Equatable {
   Quiz get quizOrCrash => quizOption.getOrElse(
       () => throw StateError('quizOption should be some in this case!'));
 
+  int get correctAnswerCount {
+    return (quizOrNull?.questionList ?? []).where((question) {
+      return question.answerList.any((answer) {
+        return answer.selected && answer.correct;
+      });
+    }).length;
+  }
+
+  int get wrongAnswerCount {
+    return (quizOrNull?.questionList ?? []).where((question) {
+      return question.answerList.any((answer) {
+        return answer.selected && !answer.correct;
+      });
+    }).length;
+  }
+
+  int get totalQuestionCount => quizOrNull?.questionList.length ?? 0;
+
+  int get unansweredQuestionCount {
+    return (quizOrNull?.questionList ?? []).where((question) {
+      return !question.answered;
+    }).length;
+  }
+
   bool get allAnswered =>
       availableQuestionList.every((element) => element.answered);
 

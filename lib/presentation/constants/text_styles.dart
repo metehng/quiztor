@@ -36,3 +36,15 @@ const TextStyle f20w700 = TextStyle(
   fontWeight: FontWeight.w700,
   color: bgColor,
 );
+
+const TextStyle f24w700 = TextStyle(
+  fontSize: 24,
+  fontWeight: FontWeight.w700,
+  color: bgColor,
+);
+
+const TextStyle f48w700 = TextStyle(
+  fontSize: 48,
+  fontWeight: FontWeight.w700,
+  color: bgColor,
+);
