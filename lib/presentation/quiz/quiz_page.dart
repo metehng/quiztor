@@ -28,7 +28,10 @@ class QuizPage extends ConsumerWidget {
 
     return Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => const QuizPage(),
+        builder: (_) => ProviderScope(
+          overrides: [questionCountDownNotifierProvider],
+          child: const QuizPage(),
+        ),
       ),
     );
   }
