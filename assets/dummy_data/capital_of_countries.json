@@ -1,0 +1,98 @@
+{
+    "quiz" : {
+        "id" : "capital_of_countries",
+        "name" : "Capital Of Countries",
+        "question_list": [
+            {
+                "id": "1",
+                "text": "What is the capital of France?",
+                "answer_list": [
+                    {"id": "a", "text": "Paris", "correct": true},
+                    {"id": "b", "text": "Rome", "correct": false},
+                    {"id": "c", "text": "Berlin", "correct": false}
+                ]
+            },
+            {
+                "id": "2",
+                "text": "What is the capital of Germany?",
+                "answer_list": [
+                    {"id": "a", "text": "Istanbul", "correct": false},
+                    {"id": "b", "text": "London", "correct": false},
+                    {"id": "c", "text": "Berlin", "correct": true}
+                ]
+            },
+            {
+                "id": "3",
+                "text": "What is the capital of England?",
+                "answer_list": [
+                    {"id": "a", "text": "Paris", "correct": false},
+                    {"id": "b", "text": "London", "correct": true},
+                    {"id": "c", "text": "Athens", "correct": false}
+                ]
+            },
+            {
+                "id": "4",
+                "text": "What is the capital of Italy?",
+                "answer_list": [
+                    {"id": "a", "text": "Brussels", "correct": false},
+                    {"id": "b", "text": "Rome", "correct": true},
+                    {"id": "c", "text": "Warsaw", "correct": false}
+                ]
+            },
+            {
+                "id": "5",
+                "text": "What is the capital of Spain?",
+                "answer_list": [
+                    {"id": "a", "text": "Madrid", "correct": true},
+                    {"id": "b", "text": "Copenhagen", "correct": false},
+                    {"id": "c", "text": "Ankara", "correct": false}
+                ]
+            },
+            {
+                "id": "6",
+                "text": "What is the capital of Portugal?",
+                "answer_list": [
+                    {"id": "a", "text": "Bern", "correct": false},
+                    {"id": "b", "text": "Lisbon", "correct": true},
+                    {"id": "c", "text": "Berlin", "correct": false}
+                ]
+            },
+            {
+                "id": "7",
+                "text": "What is the capital of Belgium?",
+                "answer_list": [
+                    {"id": "a", "text": "Paris", "correct": false},
+                    {"id": "b", "text": "Stockholm", "correct": false},
+                    {"id": "c", "text": "Brussels", "correct": true}
+                ]
+            },
+            {
+                "id": "8",
+                "text": "What is the capital of Netherlands?",
+                "answer_list": [
+                    {"id": "a", "text": "London", "correct": false},
+                    {"id": "b", "text": "Rome", "correct": false},
+                    {"id": "c", "text": "Amsterdam", "correct": true}
+                ]
+            },
+            {
+                "id": "9",
+                "text": "What is the capital of Switzerland?",
+                "answer_list": [
+                    {"id": "a", "text": "Bern", "correct": true},
+                    {"id": "b", "text": "Paris", "correct": false},
+                    {"id": "c", "text": "Stockholm", "correct": false}
+                ]
+            },
+            {
+                "id": "10",
+                "text": "What is the capital of Turkey?",
+                "answer_list": [
+                    {"id": "a", "text": "Paris", "correct": false},
+                    {"id": "b", "text": "Ankara", "correct": true},
+                    {"id": "c", "text": "Istanbul", "correct": false}
+                ]
+            }
+        ]
+    }
+}
