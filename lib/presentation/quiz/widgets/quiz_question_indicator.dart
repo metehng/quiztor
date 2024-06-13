@@ -1,7 +1,8 @@
 part of '../quiz_page.dart';
 
 class _QuizQuestionIndicator extends ConsumerWidget {
-  const _QuizQuestionIndicator();
+  const _QuizQuestionIndicator({required this.pageController});
+  final PageController pageController;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -33,6 +34,8 @@ class _QuizQuestionIndicator extends ConsumerWidget {
             ignoring: question.expired,
             child: CustomContainer(
               onTap: () {
+                if (pageController.page != pageController.page?.ceil()) return;
+
                 ref.read(quizNotifierProvider.notifier).updateCurrentQuestionId(
                       questionId: question.id,
                     );

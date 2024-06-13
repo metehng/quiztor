@@ -24,6 +24,7 @@ class _QuizSinglePageState extends ConsumerState<_QuizSuccessPage> {
   @override
   void dispose() {
     _pageController.dispose();
+
     super.dispose();
   }
 
@@ -68,7 +69,7 @@ class _QuizSinglePageState extends ConsumerState<_QuizSuccessPage> {
               ),
             ),
             const SizedBox(height: 16),
-            const _QuizQuestionIndicator(),
+            _QuizQuestionIndicator(pageController: _pageController),
             const SizedBox(height: 16),
             const _QuizSubmitButton(),
           ],
@@ -83,6 +84,9 @@ class _QuizSinglePageState extends ConsumerState<_QuizSuccessPage> {
   }) {
     if (prevAvailableQuestionIndex == currAvailableQuestionIndex) return;
     if (!_pageController.hasClients) return;
+
+    //* Prevents the animateToPage function from working while the user is sliding the page
+    if (_pageController.page != _pageController.page?.ceil()) return;
 
     _pageController.animateToPage(
       currAvailableQuestionIndex,
