@@ -85,7 +85,7 @@ class QuizNotifier extends StateNotifier<QuizState> {
   }
 
   String? _nextUnansweredQuestionId() {
-    int index = state.availableQuestionIndex;
+    int index = state.availableQuestionIndexOrCrash;
 
     index = state.availableQuestionList
         .indexWhere((element) => !element.answered, index + 1);
@@ -95,7 +95,7 @@ class QuizNotifier extends StateNotifier<QuizState> {
   }
 
   String? _previousUnansweredQuestionId() {
-    int index = state.availableQuestionIndex;
+    int index = state.availableQuestionIndexOrCrash;
 
     index = state.availableQuestionList
         .lastIndexWhere((element) => !element.answered, index - 1);
@@ -105,7 +105,7 @@ class QuizNotifier extends StateNotifier<QuizState> {
   }
 
   String? _availableQuestionId() {
-    int index = state.availableQuestionIndex;
+    int index = state.availableQuestionIndexOrCrash;
     if (index == state.availableQuestionList.length - 1) {
       index--;
     } else {

@@ -43,18 +43,19 @@ class _QuizQuestionPageView extends ConsumerWidget {
     required int newIndex,
     required WidgetRef ref,
   }) {
+    if (pageController.page == null) return;
+
     final questionList = ref.read(
         quizNotifierProvider.select((state) => state.availableQuestionList));
 
-    final currIndex = ref.read(
-        quizNotifierProvider.select((state) => state.availableQuestionIndex));
-    if (pageController.page == null) return;
+    final currIndex = ref.read(quizNotifierProvider
+        .select((state) => state.availableQuestionIndexOrCrash));
 
     final difference = (currIndex.toDouble() - pageController.page!).abs();
     if (difference >= 1) return; //* Prevents multiple page changes
 
-    final quizNotifer = ref.read(quizNotifierProvider.notifier);
     final questionId = questionList[newIndex].id;
+    final quizNotifer = ref.read(quizNotifierProvider.notifier);
     quizNotifer.updateCurrentQuestionId(questionId: questionId);
   }
 }

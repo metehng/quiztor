@@ -26,7 +26,7 @@ class _QuizQuestionIndicator extends ConsumerWidget {
                   ? answeredQuestionColor
                   : unansweredQuestionColor;
 
-          final highlightColor = quizState.questionIndex == index;
+          final highlightColor = quizState.questionIndexOrCrash == index;
           final borderColor = highlightColor ? darkColor : Colors.transparent;
 
           return IgnorePointer(

@@ -1,16 +1,13 @@
 part of '../quiz_page.dart';
 
 class _QuizQuestionTextSection extends ConsumerWidget {
-  const _QuizQuestionTextSection({
-    required this.text,
-  });
-
+  const _QuizQuestionTextSection({required this.text});
   final String text;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final number = ref
-        .watch(quizNotifierProvider.select((value) => value.questionIndex + 1));
+    final number = ref.watch(
+        quizNotifierProvider.select((value) => value.questionIndexOrCrash + 1));
 
     return Container(
       width: double.infinity,

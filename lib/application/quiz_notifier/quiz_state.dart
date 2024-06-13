@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:quiztor/domain/quiz/answer.dart';
 import 'package:quiztor/domain/quiz/question.dart';
 
 import 'package:quiztor/domain/quiz/quiz.dart';
@@ -13,43 +14,6 @@ class QuizState extends Equatable {
     required this.currentQuestionIdOption,
   });
 
-  Quiz? get quizOrNull => quizOption.fold(() => null, (quiz) => quiz);
-  Quiz get quizOrCrash => quizOption.getOrElse(
-      () => throw StateError('quizOption should be some in this case!'));
-
-  int get correctAnswerCount {
-    return (quizOrNull?.questionList ?? []).where((question) {
-      return question.answerList.any((answer) {
-        return answer.selected && answer.correct;
-      });
-    }).length;
-  }
-
-  int get wrongAnswerCount {
-    return (quizOrNull?.questionList ?? []).where((question) {
-      return question.answerList.any((answer) {
-        return answer.selected && !answer.correct;
-      });
-    }).length;
-  }
-
-  int get totalQuestionCount => quizOrNull?.questionList.length ?? 0;
-
-  int get unansweredQuestionCount {
-    return (quizOrNull?.questionList ?? []).where((question) {
-      return !question.answered;
-    }).length;
-  }
-
-  bool get allAnswered =>
-      availableQuestionList.every((element) => element.answered);
-
-  String get currentQuestionId => currentQuestionIdOption.getOrElse(
-        () => throw StateError(
-          'currentQuestionIdOption cannot be none in this case!',
-        ),
-      );
-
   factory QuizState.initial() {
     return QuizState(
       currentQuestionIdOption: none(),
@@ -57,22 +21,62 @@ class QuizState extends Equatable {
     );
   }
 
-  int get availableQuestionIndex {
-    return availableQuestionList.indexWhere((question) {
-      return question.id == currentQuestionIdOption.getOrElse(() => '');
+  Quiz get quizOrCrash => quizOption.getOrElse(
+      () => throw StateError('quizOption should be some in this case!'));
+
+  int get correctAnswerCount {
+    return _getSelectedAnswerCount(expression: (answer) {
+      return answer.correct;
     });
   }
 
-  int get questionIndex {
-    return (quizOrNull?.questionList ?? []).indexWhere((question) {
-      return question.id == currentQuestionIdOption.getOrElse(() => '');
+  int get wrongAnswerCount {
+    return _getSelectedAnswerCount(expression: (answer) {
+      return !answer.correct;
     });
+  }
+
+  int get totalQuestionCount => quizOrCrash.questionList.length;
+
+  int get unansweredQuestionCount {
+    return quizOrCrash.questionList.where((question) {
+      return !question.answered;
+    }).length;
   }
 
   List<Question> get availableQuestionList {
-    return (quizOrNull?.questionList ?? []).where((question) {
+    return quizOrCrash.questionList.where((question) {
       return !question.expired;
     }).toList();
+  }
+
+  bool get allAnswered =>
+      availableQuestionList.every((element) => element.answered);
+
+  String get currentQuestionIdOrCrash => currentQuestionIdOption.getOrElse(
+        () => throw StateError(
+          'currentQuestionIdOption cannot be none in this case!',
+        ),
+      );
+
+  int get availableQuestionIndexOrCrash {
+    return availableQuestionList.indexWhere((question) {
+      return question.id == currentQuestionIdOrCrash;
+    });
+  }
+
+  int get questionIndexOrCrash {
+    return quizOrCrash.questionList.indexWhere((question) {
+      return question.id == currentQuestionIdOrCrash;
+    });
+  }
+
+  int _getSelectedAnswerCount({required bool Function(Answer) expression}) {
+    return quizOrCrash.questionList.where((question) {
+      return question.answerList.any((answer) {
+        return answer.selected && expression(answer);
+      });
+    }).length;
   }
 
   @override

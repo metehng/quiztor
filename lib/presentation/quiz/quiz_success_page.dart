@@ -13,7 +13,7 @@ class _QuizSinglePageState extends ConsumerState<_QuizSuccessPage> {
   @override
   void initState() {
     _pageController = PageController();
-    final questionId = ref.read(quizNotifierProvider).currentQuestionId;
+    final questionId = ref.read(quizNotifierProvider).currentQuestionIdOrCrash;
     ref
         .read(questionCountDownNotifierProvider(questionId).notifier)
         .startTimer();
@@ -29,16 +29,12 @@ class _QuizSinglePageState extends ConsumerState<_QuizSuccessPage> {
 
   @override
   Widget build(BuildContext context) {
-    final quizTitle = ref.watch(
-      quizNotifierProvider.select((state) => state.quizOrCrash.title),
-    );
-
     ref.listen(
       quizNotifierProvider,
       (previous, current) {
         _availableQuestionIndexNotifierListener(
-          prevAvailableQuestionIndex: previous?.availableQuestionIndex,
-          currAvailableQuestionIndex: current.availableQuestionIndex,
+          prevAvailableQuestionIndex: previous?.availableQuestionIndexOrCrash,
+          currAvailableQuestionIndex: current.availableQuestionIndexOrCrash,
         );
 
         _availableQuestionListNotifierListener(
@@ -47,10 +43,14 @@ class _QuizSinglePageState extends ConsumerState<_QuizSuccessPage> {
         );
 
         _currentQuestionIdNotifierListener(
-          prevCurrentQuestionId: previous?.currentQuestionId,
-          currCurrentQuestionId: current.currentQuestionId,
+          prevCurrentQuestionId: previous?.currentQuestionIdOrCrash,
+          currCurrentQuestionId: current.currentQuestionIdOrCrash,
         );
       },
+    );
+
+    final quizTitle = ref.watch(
+      quizNotifierProvider.select((state) => state.quizOrCrash.title),
     );
 
     return Scaffold(
