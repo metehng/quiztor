@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:quiztor/presentation/constants/colors.dart';
 import 'package:quiztor/presentation/constants/text_styles.dart';
 import 'package:quiztor/presentation/core/custom_container.dart';
-import 'package:quiztor/presentation/quiz_page/quiz_page.dart';
+import 'package:quiztor/presentation/quiz/quiz_page.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({required this.title});
