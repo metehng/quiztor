@@ -26,7 +26,7 @@ class _QuizQuestionPageView extends ConsumerWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            _QuizQuestionCounterSection(questionId: question.id),
+            _QuizQuestionCountDownSection(questionId: question.id),
             _QuizQuestionTextSection(text: question.text),
             _QuizQuestionAnswerSection(
               questionId: question.id,

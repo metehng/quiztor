@@ -12,7 +12,7 @@ import 'package:quiztor/presentation/quiz_result_page.dart';
 part 'quiz_success_page.dart';
 part 'widgets/quiz_question_page_view.dart';
 part 'widgets/quiz_question_text_section.dart';
-part 'widgets/quiz_question_counter_section.dart';
+part 'widgets/quiz_question_count_down_section.dart';
 part 'widgets/quiz_question_indicator.dart';
 part 'widgets/quiz_question_answer_section.dart';
 part 'widgets/quiz_submit_button.dart';

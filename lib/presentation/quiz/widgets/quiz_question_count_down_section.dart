@@ -1,7 +1,7 @@
 part of '../quiz_page.dart';
 
-class _QuizQuestionCounterSection extends ConsumerWidget {
-  const _QuizQuestionCounterSection({required this.questionId});
+class _QuizQuestionCountDownSection extends ConsumerWidget {
+  const _QuizQuestionCountDownSection({required this.questionId});
   final String questionId;
 
   @override
