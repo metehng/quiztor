@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
-
 import 'package:quiztor/domain/quiz/question.dart';
 
 class Quiz extends Equatable {
