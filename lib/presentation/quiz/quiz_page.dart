@@ -7,7 +7,7 @@ import 'package:quiztor/domain/quiz/question.dart';
 import 'package:quiztor/presentation/constants/colors.dart';
 import 'package:quiztor/presentation/constants/text_styles.dart';
 import 'package:quiztor/presentation/core/custom_container.dart';
-import 'package:quiztor/presentation/quiz_result_page.dart';
+import 'package:quiztor/presentation/quiz/quiz_result_page.dart';
 
 part 'quiz_success_page.dart';
 part 'widgets/quiz_question_page_view.dart';
